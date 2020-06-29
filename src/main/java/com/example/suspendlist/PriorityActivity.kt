@@ -11,6 +11,7 @@ class PriorityActivity : AppCompatActivity() {
     private val TAG = "PriorityActivity2"
 
     private val onObserve = {
+        // add second and third async task into SuspendList
         SuspendList.of("start-up") {
             Item {
                 Log.d(TAG, ": item user")
@@ -32,11 +33,11 @@ class PriorityActivity : AppCompatActivity() {
 
 
     private fun onActivityResume(activty: Any?) {
-        Log.v("ttaylor", "tag=suspend list, fetch activity(${activty.toString()}) resume  thread id=${Thread.currentThread().id}")
+        Log.v("ttaylor", "tag=suspend list, fetch activity(${activty.toString()}) resume  ")
     }
 
     private fun onUserResume(user: Any?) {
-        Log.v("ttaylor", "tag=suspend list, fetch user(${user.toString()}) resume  thread id=${Thread.currentThread().id}")
+        Log.v("ttaylor", "tag=suspend list, fetch user(${user.toString()}) resume ")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,16 +48,12 @@ class PriorityActivity : AppCompatActivity() {
     }
 
     suspend fun fetchUser(): String {
-        Log.v("ttaylor", " PriorityActivity.fetchUser()  thread id=${Thread.currentThread().id}")
         delay(4000)
-        Log.w("ttaylor", " PriorityActivity.fetchUser()  thread id=${Thread.currentThread().id}")
         return "User Taylor"
     }
 
     suspend fun fetchActivity(): String {
-        Log.v("ttaylor", " PriorityActivity.fetchActivity()  thread id=${Thread.currentThread().id}")
         delay(5000)
-        Log.w("ttaylor", " PriorityActivity.fetchActivity()  thread id=${Thread.currentThread().id}")
         return "Activity Bonus"
     }
 

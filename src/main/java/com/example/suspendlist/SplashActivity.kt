@@ -15,6 +15,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // add first async task into SuspendList
         SuspendList.of("start-up") {
             Item {
                 suspendAction = { fetchUpdateInfo() }
